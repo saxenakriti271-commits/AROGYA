@@ -11,9 +11,28 @@ import base64
 from io import BytesIO
 import speech_recognition as sr
 import hashlib
+import subprocess
+import sys
+
+# Ensure geocoder is installed
+try:
+    import geocoder
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "geocoder"])
+    import geocoder
+
+# Continue with your other imports
+import streamlit as st
+import pandas as pd
+import requests
+from gtts import gTTS
+import speech_recognition as sr
+import groq
+
 
 # --- API KEYS ---
-GROQ_API_KEY = "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"
+import os
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 WEATHER_API_KEY = "1042b9678ab6040423bb4f792e3d4ef6"
 GOOGLE_MAPS_API_KEY = "AIzaSyAWDpyX1nouw4fA8ChkkNO5wol1GsxjgY8"
 
